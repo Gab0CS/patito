@@ -1,4 +1,5 @@
 services:
+
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: patito-sqlserver
@@ -13,6 +14,24 @@ services:
 
     volumes:
       - sqlserver_data:/var/opt/mssql
+
+  sql-init:
+    image: mcr.microsoft.com/mssql-tools
+    depends_on:
+      - sqlserver
+
+    volumes:
+      - ./sql:/scripts
+
+    command: >
+      /bin/bash -c "
+      sleep 30;
+      /opt/mssql-tools/bin/sqlcmd
+      -S sqlserver
+      -U sa
+      -P 'Patito123!'
+      -i /scripts/init.sql
+      "
 
 volumes:
   sqlserver_data:
