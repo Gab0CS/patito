@@ -30,6 +30,8 @@ public class PedidosEntity {
     @Column(nullable = false)
     private LocalDateTime fechaCreacion;
 
+    private String ipUsuario;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
     private ClientesEntity cliente;
