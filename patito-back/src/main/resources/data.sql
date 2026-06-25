@@ -27,3 +27,6 @@ INSERT INTO productos (
 )
 VALUES
 ('HAWA003', 'Nissan Frontier', 890000.00, 0.00, 3);
+
+INSERT INTO usuarios (username, password, rol) VALUES ('admin', 'admin123', 'ADMIN');
+INSERT INTO usuarios (username, password, rol) VALUES ('vendedor1', 'vendedor123', 'USER');
