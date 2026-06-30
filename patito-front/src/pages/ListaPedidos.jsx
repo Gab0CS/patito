@@ -32,7 +32,10 @@ export default function ListaPedidos() {
       <div style={styles.card}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h2>Pedidos</h2>
-          <button style={styles.btn} onClick={() => navigate('/nuevo-pedido')}>+ Nuevo pedido</button>
+          <div style={{ display: 'flex', gap: '0.8rem' }}>
+            <button style={styles.btn} onClick={() => navigate('/nuevo-pedido')}>+ Nuevo pedido</button>
+            <button style={{ ...styles.btn, background: '#ff4d4f' }} onClick={() => { localStorage.removeItem('token'); navigate('/') }}>Cerrar sesión</button>
+          </div>
         </div>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <table style={styles.table}>
